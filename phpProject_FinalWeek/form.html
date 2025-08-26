@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admissions Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- header section with  and title -->
+        <div class="form-header">
+            <h1>Student Admissions Form</h1>
+            <p>Please complete all required fields to submit the application successfully.</p>
+        </div>
+        
+        <!-- main registration form -->
+        <form action="insert.php" method="POST" id="admissionForm" enctype="multipart/form-data">
+            
+            <!-- personal information section -->
+            <div class="form-group">
+                <label for="full_name" class="required">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" required minlength="2">
+                <small class="form-hint">Enter complete legal name (eg. As shown in Passport)</small>
+            </div>
+
+            <div class="form-group">
+                <label for="dob" class="required">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <div class="form-group">
+                <label class="required">Gender:</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="male" name="gender" value="Male" required>
+                        <label for="male">Male</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="female" name="gender" value="Female">
+                        <label for="female">Female</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="other" name="gender" value="Other">
+                        <label for="other">Other</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- academic information section -->
+            <div class="form-group">
+                <label for="course" class="required">Course/Program:</label>
+                <select id="course" name="course" required>
+                    <option value="">Select preferred course</option>
+                    <option value="Computer Science">BS - Computer Science</option>
+                    <option value="Business Administration">BS - Business Administration</option>
+                    <option value="Multimedia Arts">BA - Multimedia Arts</option>
+                    <option value="Creative Writing">BA - Creative Writing</option>
+                    <option value="International Relations">BA - International Relations</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="year_level" class="required">Year Level:</label>
+                <select id="year_level" name="year_level" required>
+                    <option value="">Select academic year</option>
+                    <option value="1">First Year</option>
+                    <option value="2">Second Year</option>
+                    <option value="3">Third Year</option>
+                    <option value="4">Fourth Year (Graduating)</option>
+                </select>
+            </div>
+
+            <!-- contact information section -->
+            <div class="form-group">
+                <label for="contact_number" class="required">Contact Number:</label>
+                <input type="tel" id="contact_number" name="contact_number" required>
+                <small class="form-hint">Please include country code for international numbers</small>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="required">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+                <small class="form-hint">This will be used for all official communications</small>
+            </div>
+
+            <!-- photo upload section -->
+            <div class="form-group">
+                <label for="student_photo">Student Photo (Optional):</label>
+                <div class="file-upload-container">
+                    <input type="file" id="student_photo" name="student_photo" accept="image/*">
+                    <div class="file-upload-preview">
+                        <img id="photo-preview" src="" alt="Photo Preview" style="display: none;">
+                        <div id="file-info" class="file-info"></div>
+                    </div>
+                </div>
+                <small class="form-hint">Upload a clear photo (JPEG/PNG, max 2MB) - optional</small>
+            </div>
+
+            <!-- form action buttons -->
+            <div class="form-group submit-group">
+                <div class="button-row">
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                    <button type="button" class="reset-btn-form" onclick="resetForm()">Reset Form</button>
+                </div>
+            </div>
+        </form>
+        
+        <!-- footer navigation -->
+        <div class="form-footer">
+            <p>
+                <a href="index.html">← Back to Home</a> | 
+                <a href="display_records.php">View All Students</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- reset confirmation modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirm Reset</h3>
+            <p>Are you sure you want to reset the form? All entered data will be lost.</p>
+            <div class="modal-buttons">
+                <button onclick="confirmReset()" class="confirm-btn">Yes, Reset</button>
+                <button onclick="closeModal()" class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // form elements
+        const form = document.getElementById('admissionForm');
+        const photoInput = document.getElementById('student_photo');
+        const photoPreview = document.getElementById('photo-preview');
+        const fileInfo = document.getElementById('file-info');
+
+        // set minimum age requirement (17 years old)
+        const today = new Date();
+        const maxDate = new Date(today.getFullYear() - 17, today.getMonth(), today.getDate());
+        document.getElementById('dob').max = maxDate.toISOString().split('T')[0];
+
+        /**
+         * handle photo upload and preview
+         */
+        photoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // validate file size (2mb maximum)
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('File size must be less than 2MB');
+                    this.value = '';
+                    return;
+                }
+                
+                // show preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    photoPreview.src = e.target.result;
+                    photoPreview.style.display = 'block';
+                    fileInfo.innerHTML = `<strong>${file.name}</strong><br>size: ${(file.size / 1024).toFixed(1)} kb`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        /**
+         * form submission validation and confirmation
+         */
+        form.addEventListener('submit', function(e) {
+            // confirm submission
+            if (!confirm('Are you sure you want to submit this application?')) {
+                e.preventDefault();
+            }
+        });
+
+        /**
+         * show reset confirmation modal
+         */
+        function resetForm() {
+            document.getElementById('confirmModal').style.display = 'flex';
+        }
+
+        /**
+         * confirm and execute form reset
+         */
+        function confirmReset() {
+            form.reset();
+            photoPreview.style.display = 'none';
+            fileInfo.innerHTML = '';
+            closeModal();
+        }
+
+        /**
+         * close confirmation modal
+         */
+        function closeModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

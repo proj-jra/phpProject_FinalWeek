@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container landing-container">
+        <!-- Hero Header -->
+        <div class="form-header landing-header">
+            <h1>Student Management System</h1>
+            <p>Platform for student registration, records management, and administration</p>
+        </div>
+        
+        <div style="padding: 40px;">
+            <div class="landing-nav-grid">
+                <div class="nav-card register-card">
+                    <div class="nav-card-header">
+                        <h3>Register New Student</h3>
+                    </div>
+                    <p>Add new students to the system with complete information including personal details & course selection.</p>
+                    <button onclick="window.location.href='form.html'" class="nav-btn primary-btn">Start Registration</button>
+                </div>
+
+                <div class="nav-card view-card">
+                    <div class="nav-card-header">
+                        <h3>Student Records</h3>
+                    </div>
+                    <p>Browse all registered students, filter by year level, and manage existing records.</p>
+                    <button onclick="window.location.href='display_records.php'" class="nav-btn primary-btn">View Records</button>
+                </div>
+
+                <div class="nav-card search-card">
+                    <div class="nav-card-header">
+                        <h3>Quick Search</h3>
+                    </div>
+                    <form action="display_records.php" method="GET" class="quick-search-form">
+                        <input type="text" name="name" placeholder="Student/Course Name" class="quick-search-input">
+                        <button type="submit" class="nav-btn primary-btn">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
