@@ -31,10 +31,10 @@ phpProject_FinalWeek/
 
 ## Screenshots
 
-![Landing Page](.screenshots/Screenshot1.png)
-![Student Admissions Page](.screenshots/Screenshot2.png)
-![Student Management & Search Page](.screenshots/Screenshot3.png)
-![Student Edit Page](.screenshots/Screenshot4.png)
+![Landing Page](screenshots/Screenshot1.png)
+![Student Admissions Page](screenshots/Screenshot2.png)
+![Student Management & Search Page](screenshots/Screenshot3.png)
+![Student Edit Page](screenshots/Screenshot4.png)
 
 
 ## Setup & Deployment (Locally)
