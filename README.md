@@ -86,6 +86,6 @@ use localhost. This should open in your default browser.
 ## Acknowledgements
 
  - [readme.so](readme.so) for helping me out with making this readme
- - LE SERRAFIM (Source Music)'s 2023 Seasons Greetings for the ID Photos & Mockup information.
+ - LE SERRAFIM (Source Music)'s (2023 Seasons Greetings) for the ID Photos & other Mockup information.
 
-   [I do not claim the photos and used as my own. Im just a fan of the group. ]
+   [I do not claim the photos and other data used as my own. Im just a fan of the group.]
