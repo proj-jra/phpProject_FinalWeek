@@ -31,13 +31,13 @@ phpProject_FinalWeek/
 
 ## Screenshots
 
-![Landing Page](<img width="1737" height="1010" alt="Screenshot1" src="https://github.com/user-attachments/assets/75d840a3-b396-48b1-9331-6410e4d1e060" />)
+![Landing Page]<img width="1737" height="1010" alt="Screenshot1" src="https://github.com/user-attachments/assets/75d840a3-b396-48b1-9331-6410e4d1e060" />
 
-![Student Admissions Page](<img width="412" height="906" alt="Screenshot2" src="https://github.com/user-attachments/assets/a012477b-655c-4a61-a2a0-e1a0f7a24c63" />)
+![Student Admissions Page]<img width="412" height="906" alt="Screenshot2" src="https://github.com/user-attachments/assets/a012477b-655c-4a61-a2a0-e1a0f7a24c63" />
 
-![Student Management & Search Page](<img width="713" height="838" alt="Screenshot3" src="https://github.com/user-attachments/assets/baf9f2f2-0550-417e-8903-a9ca0a7d65fe" />)
+![Student Management & Search Page]<img width="713" height="838" alt="Screenshot3" src="https://github.com/user-attachments/assets/baf9f2f2-0550-417e-8903-a9ca0a7d65fe" />
 
-![Student Edit Page](<img width="397" height="884" alt="Screenshot4" src="https://github.com/user-attachments/assets/07e11e17-1025-43c6-ab55-821a1a344bd4" />)
+![Student Edit Page]<img width="397" height="884" alt="Screenshot4" src="https://github.com/user-attachments/assets/07e11e17-1025-43c6-ab55-821a1a344bd4" />
 
 
 ## Setup & Deployment (Locally)
