@@ -1,7 +1,7 @@
 
 # Student Management System
 
-A student management system built with HTML, CSS, and JavaScript.
+A student management system built with HTML, CSS, and PHP.
 
 ## 🏫 Overview
 
